@@ -28,8 +28,12 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/events" element={<EventsList />} />
           <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/eventdashboard" element={<ProtectedRoute userTypeRequired="event_organizer" />} >
-            <Route path="/eventdashboard/createevent" element={<CreateEvent />} />
+          <Route path="/createevent" element={<CreateEvent />} />
+          <Route
+            path="/eventdashboard/*"
+            element={<ProtectedRoute userTypeRequired="event_organizer" />}
+          >
+            {/* Nested routes will be placed here */}
           </Route>
         </Routes>
       </div>

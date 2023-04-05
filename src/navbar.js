@@ -46,7 +46,8 @@ const Navbar = () => {
         )}
         {loggedIn && userType === 'event_organizer' && (
           <li>
-            <Link to="/eventdashboard/createevent">Create Event</Link>
+            {/* Update the onClick function of the "Create Event" button */}
+            <button onClick={() => navigate('/eventdashboard/createevent')}>Create Event</button>
           </li>
         )}
         <li>
