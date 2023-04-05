@@ -1,3 +1,5 @@
+//C:\Users\rinas\Desktop\PA2576-main\src\page\Explore.js
+
 import React from 'react';
 
 const Explore = () => {

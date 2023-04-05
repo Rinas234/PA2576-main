@@ -26,3 +26,4 @@ db.connect((err) => {
 // Remove the /register and /login routes from this file
 
 app.listen(5000, () => console.log("Server running on port 5000"));
+

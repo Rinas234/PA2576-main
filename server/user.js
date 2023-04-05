@@ -15,8 +15,8 @@ router.post('/register', async (req, res) => {
         'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
         [username, email, hashedPassword]
     );
-    res.status(201).json({ success: true, message: 'User created successfully' });
-
+    
+    res.status(201).json({ message: 'User created successfully' });
 
   } catch (error) {
     console.error(error);
@@ -38,10 +38,10 @@ router.post('/login', async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
           
     if (!isPasswordValid) {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
           
-    res.status(200).json({ success: true, message: 'Login successful', user });
+    res.status(200).json({ message: 'Login successful', user });
 
   } catch (error) {
     console.error(error);
