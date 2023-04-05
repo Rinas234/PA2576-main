@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthProvider'; // Make sure this path is correct
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  const { setIsAuthenticated, setUserType } = useAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -19,14 +21,18 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
+        localStorage.setItem("userType", data.user.userType);
         localStorage.setItem("token", JSON.stringify(data.user));
         localStorage.setItem("username", JSON.stringify(data.username));
         alert(data.message);
+
+        setIsAuthenticated(true); // Update isAuthenticated state
+        setUserType(data.user.userType); // Update userType state
+
         navigate("/");
       } else {
         alert(data.message);
       }
-      
     } catch (err) {
       console.error(err);
       alert("Error logging in");
@@ -54,7 +60,5 @@ const Login = () => {
     </div>
   );
 };
-
-
 
 export default Login;

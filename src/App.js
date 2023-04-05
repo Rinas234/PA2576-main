@@ -1,3 +1,4 @@
+//\src\App.js  
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./navbar";
@@ -7,7 +8,11 @@ import Logout from "./page/Logout";
 import Register from "./page/Register";
 import Contact from "./page/Contact";
 import Explore from "./page/Explore";
-import ProtectedRoute from "./ProtectedRoute";
+import CreateEvent from './CreateEvent';
+import ProtectedRoute from './ProtectedRoute';
+import EventDashboard from './EventDashboard';
+import EventDetails from './EventDetails';
+import EventsList from './EventsList';
 
 function App() {
   return (
@@ -17,12 +22,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" component={Logout} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/explore" element={<Explore />} />
-          {/* Add your protected routes below */}
-          {/* <ProtectedRoute path="/protected" component={ProtectedComponent} /> */}
+          <Route path="/events" element={<EventsList />} />
+          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/eventdashboard" element={<ProtectedRoute userTypeRequired="event_organizer" />} >
+            <Route path="/eventdashboard/createevent" element={<CreateEvent />} />
+          </Route>
         </Routes>
       </div>
     </Router>
@@ -30,3 +38,4 @@ function App() {
 }
 
 export default App;
+

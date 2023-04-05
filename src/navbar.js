@@ -7,9 +7,11 @@ import logo from "./logo.jpg";
 const Navbar = () => {
   const navigate = useNavigate();
   const loggedIn = JSON.parse(localStorage.getItem("token"));
+  const userType = localStorage.getItem("userType");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userType");
     navigate("/");
   };
 
@@ -41,6 +43,11 @@ const Navbar = () => {
               <Link to="/register">Sign up</Link>
             </li>
           </>
+        )}
+        {loggedIn && userType === 'event_organizer' && (
+          <li>
+            <Link to="/eventdashboard/createevent">Create Event</Link>
+          </li>
         )}
         <li>
           <Link to="/about">About</Link>

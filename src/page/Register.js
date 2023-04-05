@@ -5,6 +5,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('regular'); // Add userType state
   const history = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
@@ -14,9 +15,9 @@ const Register = () => {
       const response = await fetch("http://localhost:5000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, email, password, userType }), // Include userType in the request data
       });
-  
+
       const data =await response.json();
 
       if (data.success) {
@@ -30,29 +31,45 @@ const Register = () => {
       alert("Error logging in");
     }
   };
-     
+
   return (
     <div>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>User Type:</label>
+          <select
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
+          >
+            <option value="regular">Regular User</option>
+            <option value="event_organizer">Event Organizer</option>
+          </select>
+        </div>
         <button type="submit">Register</button>
       </form>
     </div>

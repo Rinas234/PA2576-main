@@ -2,10 +2,10 @@
 
 const express = require('express');
 const router = express.Router();
-const db = require('..db.js'); // Import the database connection
-const Event = require('../../models/Event');
+const db = require('../db.js'); // Import the database connection
+const Event = require('./Event.js');
 
-// Create Event
+// Create Event 
 router.post('/create', async (req, res) => {
   try {
     const { title, location, date, cost, image, organizer_id } = req.body;
