@@ -1,4 +1,4 @@
-//C:\Users\rinas\Desktop\PA2576-main\src\EventsList.js
+//\EventsList.js
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';

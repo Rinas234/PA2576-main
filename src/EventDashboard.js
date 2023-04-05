@@ -1,4 +1,4 @@
-//C:\Users\rinas\Desktop\PA2576-main\src\EventDashboard.js
+//\src\EventDashboard.js
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';

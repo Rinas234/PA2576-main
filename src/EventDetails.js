@@ -1,4 +1,4 @@
-//C:\Users\rinas\Desktop\PA2576-main\src\EventDetails.js
+//\src\EventDetails.js
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

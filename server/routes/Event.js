@@ -1,5 +1,4 @@
-//\models\Event.js
-
+//server\routes\Event.js
 class Event {
     constructor(id, title, location, date, cost, image, organizer_id) {
       this.id = id;
