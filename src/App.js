@@ -28,12 +28,15 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/events" element={<EventsList />} />
           <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/createevent" element={<CreateEvent />} />
+          <Route path="/createevent" element={<ProtectedRoute />} />
+          <Route path="/eventdashboard" element={<ProtectedRoute />} />
           <Route
             path="/eventdashboard/*"
             element={<ProtectedRoute userTypeRequired="event_organizer" />}
           >
-            {/* Nested routes will be placed here */}
+            <Route index element={<EventDashboard />} />
+            <Route path="createevent" element={<CreateEvent />} />
+            {/* Add more nested routes here */}
           </Route>
         </Routes>
       </div>
@@ -42,4 +45,3 @@ function App() {
 }
 
 export default App;
-

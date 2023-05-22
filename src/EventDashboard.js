@@ -5,14 +5,18 @@ import { Link } from 'react-router-dom';
 
 const EventDashboard = () => {
   const [events, setEvents] = useState([]);
+  const loggedIn = JSON.parse(localStorage.getItem("token"));
+  const userId = loggedIn ? loggedIn.userId : null; // Get the user ID from localStorage
 
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    if (userId) {
+      fetchEvents();
+    }
+  }, [userId]);
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/events');
+      const response = await fetch(`http://localhost:5000/events?userId=${userId}`); // Use the user ID from localStorage
       const data = await response.json();
       setEvents(data);
     } catch (error) {
@@ -23,7 +27,7 @@ const EventDashboard = () => {
   return (
     <div>
       <h1>Event Dashboard</h1>
-      <Link to="/createevent">Create Event</Link>
+      <Link to="/eventdashboard/createevent">Create Event</Link>
       <ul>
         {events.map((event) => (
           <li key={event.id}>
