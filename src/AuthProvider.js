@@ -1,4 +1,4 @@
-//C:\Users\rinas\Desktop\PA2576-main\src\AuthProvider.js
+//\src\AuthProvider.js
 
 import React, { createContext, useContext, useState } from 'react';
 

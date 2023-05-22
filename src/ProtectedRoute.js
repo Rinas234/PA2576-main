@@ -1,14 +1,16 @@
-import { Outlet, Navigate } from 'react-router-dom';
-import { useAuth } from './AuthProvider';
+import { Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ userTypeRequired }) => {
-  const { isAuthenticated, userType } = useAuth();
+  const loggedIn = JSON.parse(localStorage.getItem('token'));
+  const userType = localStorage.getItem('userType');
 
-  if (!isAuthenticated || userType !== userTypeRequired) {
-    return <Navigate to="/createevent" />;
+  if (!loggedIn || (userTypeRequired && userType !== userTypeRequired)) {
+    return <Navigate to="/login" />;
   }
 
   return <Outlet />;
 };
 
 export default ProtectedRoute;
+//src\ProtectedRoute.js

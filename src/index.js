@@ -8,4 +8,4 @@ createRoot(document.getElementById("root")).render(
     <App />
   </React.StrictMode>
 );
-//C:\Users\rinas\Desktop\PA2576-main\src\index.js
+//\src\index.js

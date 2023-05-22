@@ -45,10 +45,14 @@ const Navbar = () => {
           </>
         )}
         {loggedIn && userType === 'event_organizer' && (
-          <li>
-            {/* Update the onClick function of the "Create Event" button */}
-            <button onClick={() => navigate('/eventdashboard/createevent')}>Create Event</button>
-          </li>
+          <>
+            <li>
+              <Link to="/eventdashboard/createevent">Create Event</Link>
+            </li>
+            <li>
+              <Link to="/eventdashboard">Event Dashboard</Link>
+            </li>
+          </>
         )}
         <li>
           <Link to="/about">About</Link>
@@ -65,3 +69,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+//\src\navbar.js
