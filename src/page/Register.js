@@ -33,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className='form-container'>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -60,7 +60,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+        <div style={{marginBottom: '1rem'}}>
           <label>User Type:</label>
           <select
             value={userType}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -46,6 +46,20 @@ function Home() {
     setData(new_data);
   };
 
+  const getAllEvents = async () => {
+    const res = await fetch("http://localhost:5000/events/events");
+
+    const data = await res.json()
+
+    if(data.success){
+      setData(data.events)
+    }
+  }
+
+  useEffect(() => {
+    getAllEvents();
+  }, [])
+
   return (
     <div>
       {loggedIn ? (
@@ -75,9 +89,9 @@ function Home() {
           <tbody>
             {data.map((item, index) => (
               <tr key={index}>
-                <td>{item.date}</td>
-                <td>{item.address}</td>
-                <td>{item.name}</td>
+                <td>{item.date.split('T')[0]}</td>
+                <td>{item.location}</td>
+                <td>{item.title}</td>
                 <td>{item.category}</td>
               </tr>
             ))}

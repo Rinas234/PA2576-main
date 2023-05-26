@@ -5,10 +5,10 @@ const userRouter = require('./user.js'); // Import userRouter
 const eventsRoute = require('./routes/events.js');
 const app = express();
 
-app.use('/events', eventsRoute);
 app.use(cors());
 app.use(express.json());
 app.use('/', userRouter); // Use userRouter
+app.use('/events/', eventsRoute);
 
 const db = mysql.createConnection({
   host: "127.0.0.1",

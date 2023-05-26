@@ -39,7 +39,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div>
+    <div className='form-container'>
       <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
         <div>

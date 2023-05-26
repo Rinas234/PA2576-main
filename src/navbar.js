@@ -12,7 +12,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userType");
-    navigate("/");
+    window.location.href = "/"
   };
 
   function goHome() {
@@ -26,16 +26,14 @@ const Navbar = () => {
       <ul>
         {loggedIn ? (
           <>
-            <li>
-              <button onClick={handleLogout} className="nav-item nav-link">
-                Logout
-              </button>
+            <li onClick={handleLogout}>
+              <p>Logout</p>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link className="login-button nav-item nav-link" to="/login">
+              <Link to="/login">
                 Login
               </Link>
             </li>

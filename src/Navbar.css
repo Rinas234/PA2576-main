@@ -13,7 +13,7 @@
     align-items: center;
     height: 100px;
     background-color: rgb(84, 119, 137);
-    /* color: white; */
+    color: white;
 }
 
   
@@ -65,13 +65,28 @@ li a {
 
 }
 
+li p{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 /* .login-button  a{
     background-color: #91008c;
 } */
 
 li a:hover:not(.active) {
     font-size: 22px;
-  }
+}
+
+li p:hover:not(.active) {
+    font-size: 22px;
+    color: #0a58ca;
+    cursor: pointer;
+}
   
   
 
