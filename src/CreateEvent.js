@@ -52,13 +52,40 @@ const CreateEvent = () => {
           />
         </div>
         <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </div>
+  <label>Location:</label>
+  <select
+    value={location}
+    onChange={(e) => setLocation(e.target.value)}
+    style={{
+      padding: '0.5rem',
+      fontSize: '1rem',
+      borderRadius: '5px',
+      border: '0.5px solid #F8F8F8    ',
+      backgroundColor: '#fff',
+      color: '#333',
+      width: '100%',
+      maxWidth: '300px',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    }}
+  >
+    <option value="">Select a location</option>
+    <option value="Karlskrona">Karlskrona</option>
+    <option value="Trossö">Trossö</option>
+    <option value="Hästö">Hästö</option>
+    <option value="Långö">Långö</option>
+    <option value="Saltö">Saltö</option>
+    <option value="Stenshamn">Stenshamn</option>
+    <option value="Falkholmen">Falkholmen</option>
+    <option value="Ramdala">Ramdala</option>
+    <option value="Nättraby">Nättraby</option>
+    <option value="Jämjö">Jämjö</option>
+    <option value="Sturkö">Sturkö</option>
+    <option value="Sillhövda">Sillhövda</option>
+    <option value="Ronneby">Ronneby</option>
+    {/* Add more districts of Karlskrona here */}
+  </select>
+</div>
+
         <div>
           <label>Date:</label>
           <input
@@ -77,12 +104,36 @@ const CreateEvent = () => {
           />
         </div>
         <div>
-          <label>Category:</label>
-          <input
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+        <label>Category:</label>
+        <select
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+  style={{
+    padding: '0.5rem',
+    fontSize: '1rem',
+    borderRadius: '5px',
+    border: '0.5px solid #F8F8F8    ',
+    backgroundColor: '#fff',
+    color: '#333',
+    width: '100%',
+    maxWidth: '300px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  }}
+>
+  <option value="">Select a category</option>
+  <option value="Charity">Charity</option>
+  <option value="Concerts">Concerts</option>
+  <option value="Conferences">Conferences</option>
+  <option value="Education">Education</option>
+  <option value="Internal corporate">Internal corporate</option>
+  <option value="Networking events">Networking events</option>
+  <option value="Product launch">Product launch</option>
+  <option value="Sport">Sport</option>
+  <option value="Team building">Team building</option>
+  <option value="Trade shows">Trade shows</option>
+  <option value="Other">Other</option>
+</select>
+
         </div>
         <div>
           <label>Image URL:</label>
