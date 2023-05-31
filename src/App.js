@@ -6,13 +6,16 @@ import Home from "./page/Home";
 import Login from "./page/Login";
 import Logout from "./page/Logout";
 import Register from "./page/Register";
-import Contact from "./page/Contact";
 import Explore from "./page/Explore";
 import CreateEvent from './CreateEvent';
 import ProtectedRoute from './ProtectedRoute';
 import EventDashboard from './EventDashboard';
 import EventDetails from './EventDetails';
 import EventsList from './EventsList';
+import About from './page/About';  // New import here
+import Contact from './page/Contact';  // New import here
+
+
 
 function App() {
   return (
@@ -30,12 +33,17 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/createevent" element={<ProtectedRoute />} />
           <Route path="/eventdashboard" element={<ProtectedRoute />} />
+          <Route path="/about" element={<About />} />  // New route here
+          <Route path="/Contact" element={<Contact />} />  // New route here
+
+
           <Route
             path="/eventdashboard/*"
             element={<ProtectedRoute userTypeRequired="event_organizer" />}
           >
             <Route index element={<EventDashboard />} />
             <Route path="createevent" element={<CreateEvent />} />
+
             {/* Add more nested routes here */}
           </Route>
         </Routes>
