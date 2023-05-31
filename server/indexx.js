@@ -26,16 +26,16 @@ db.connect((err) => {
 
 // Add the API endpoint for event creation
 app.post('/createevent', async (req, res) => {
-  const { title, location, date, cost, image, organizer_id } = req.body;
+  const {title, location, date, cost, image, organizer_id, category } = req.body;
 
   // Replace the following query with your specific database schema and table name
   const query = `
-    INSERT INTO events (title, location, date, cost, image, organizer_id)
-    VALUES (?, ?, ?, ?, ?, ?);
+    INSERT INTO events (title, location, date, cost, image, organizer_id, category)
+    VALUES (?, ?, ?, ?, ?, ?, ?);
   
     `;
 
-  db.query(query, [title, location, date, cost, image, organizer_id], (error, results) => {
+  db.query(query, [title, location, date, cost, image, organizer_id, category], (error, results) => {
     if (error) {
       res.status(400).json({
         success: false,
@@ -53,6 +53,7 @@ app.post('/createevent', async (req, res) => {
           date,
           cost,
           image,
+          category,
           organizer_id,
         },
       });

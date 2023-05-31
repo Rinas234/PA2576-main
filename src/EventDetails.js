@@ -34,6 +34,7 @@ const EventDetails = () => {
       <p>Location: {event.location}</p>
       <p>Date: {event.date}</p>
       <p>Cost: ${event.cost}</p>
+      <p>category: {event.category}</p>
       <img src={event.image} alt={event.title} />
       <button>Register for Event</button>
     </div>

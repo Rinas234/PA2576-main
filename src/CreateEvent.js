@@ -7,6 +7,7 @@ const CreateEvent = () => {
   const [date, setDate] = useState('');
   const [cost, setCost] = useState('');
   const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +17,7 @@ const CreateEvent = () => {
       const response = await fetch('http://localhost:5000/createevent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, location, date, cost, image, organizer_id }),
+        body: JSON.stringify({ title, location, date, cost, image, organizer_id, category }),
       });
     
       const data = await response.json();
@@ -70,9 +71,17 @@ const CreateEvent = () => {
           <label>Cost:</label>
           <input
             type="number"
-            step="0.01"
+            step="0.1"
             value={cost}
             onChange={(e) => setCost(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Category:</label>
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           />
         </div>
         <div>

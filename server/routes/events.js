@@ -12,15 +12,15 @@ router.get("/", async (req, res) => {
 // Create Event 
 router.post('/create', async (req, res) => {
   try {
-    const { title, location, date, cost, image, organizer_id } = req.body;
+    const { title, location, date, cost, image, organizer_id, category } = req.body;
 
     // Execute SQL query to insert event into database
     const [rows] = await db.execute(
-      'INSERT INTO events (title, location, date, cost, image, organizer_id) VALUES (?, ?, ?, ?, ?, ?)',
-      [title, location, date, cost, image, organizer_id]
+      'INSERT INTO events (title, location, date, cost, image, organizer_id, category) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [title, location, date, cost, image, organizer_id, category]
     );
     // Create a new event object
-    const newEvent = new Event(rows.insertId, title, location, date, cost, image, organizer_id);
+    const newEvent = new Event(rows.insertId, title, location, date, cost, image, organizer_id, category);
     res.status(201).json({ success: true, message: 'Event created successfully', event: newEvent });
   } catch (error) {
     console.error(error);

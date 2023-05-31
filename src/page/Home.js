@@ -32,18 +32,24 @@ function Home() {
       category: 'Rave',
     },
   ]);
+  
   const [data, setData] = useState(originalData);
 
   const onSearch = (search_term) => {
-    let new_data = originalData.filter((x) =>
-      x.date.includes(search_term) ||
-        x.address.toLowerCase().includes(search_term) ||
-        x.name.toLowerCase().includes(search_term) ||
-        x.category.toLowerCase().includes(search_term)
+    let search_term_lower = search_term.toLowerCase();
+    let new_data = originalData.filter((event) =>
+      (event.date && event.date.includes(search_term)) ||
+      (event.location && event.location.toLowerCase().includes(search_term_lower)) ||
+      (event.title && event.title.toLowerCase().includes(search_term_lower)) ||
+      // if there is a category property in the fetched data
+      (event.category && event.category.toLowerCase().includes(search_term_lower)) ||
+      // assuming the cost is a number, convert it to string before calling includes
+      (event.cost && event.cost.toString().includes(search_term))
     );
-
+  
     setSearch(search_term);
     setData(new_data);
+  
   };
 
   const getAllEvents = async () => {
@@ -52,9 +58,11 @@ function Home() {
     const data = await res.json()
 
     if(data.success){
-      setData(data.events)
+      setData(data.events);
+      setOriginalData(data.events); // update original data
     }
   }
+
 
   useEffect(() => {
     getAllEvents();
@@ -73,17 +81,18 @@ function Home() {
           <InputGroup className="my-3">
             <Form.Control
               onChange={(e) => onSearch(e.target.value)}
-              placeholder="Search contacts"
+              placeholder="Search"
             />
           </InputGroup>
         </Form>
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Datum</th>
-              <th>Adress</th>
-              <th>Namn</th>
-              <th>Kategori</th>
+              <td>Date</td>
+              <td>Adress</td>
+              <td>Name</td>
+              <td>Category</td>
+              <td>Price</td>
             </tr>
           </thead>
           <tbody>
@@ -93,6 +102,8 @@ function Home() {
                 <td>{item.location}</td>
                 <td>{item.title}</td>
                 <td>{item.category}</td>
+                <td>{item.cost}</td>
+
               </tr>
             ))}
           </tbody>

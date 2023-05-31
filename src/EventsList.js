@@ -37,6 +37,7 @@ const EventsList = () => {
     <p>Location: {event.location}</p>
     <p>Date: {event.date}</p>
     <p>Cost: ${event.cost}</p>
+    <p>Category: {event.category}</p>
     <img src={event.image} alt={event.title} />
   </div>
 ))}
